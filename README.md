@@ -9,4 +9,12 @@
 * Caso o site esteja indisponível, o script deve enviar uma notificação informando a indisponibilidade do site via Webhook para algum canal (Discord, Telegram ou Slack);
 * O script deve armazenar os logs da execução em um local no servidor.
 
+## Primeira etapa - configuração do ambiente:
+Primeiro rodei o seguinte comando no PowerShell:
+```
+wsl --install
+```
+Em seguida, instalei o seguinte subsystem WSL2 da Microsoft Store:<br/>
 ![image](https://github.com/user-attachments/assets/ae1bbd12-2b36-4598-aae7-76d61429a354)
+
+
