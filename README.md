@@ -33,4 +33,7 @@ Após a instalação podemos rodar o comando `systemctl status nginx` para verif
 Dentro do diretório `/var/www/html` encontra-se um arquivo chamado `index.nginx-debian.html` com uma apresentação simples sobre o Nginx. Mative a estrutura do site e apenas alterei o texto.<br/>
 ![image](https://github.com/user-attachments/assets/45d5e5e0-3093-4e73-a07f-6d60233ef0ab)
 
+## Quarta etapa - criação do script de verificação:
+
+
 
