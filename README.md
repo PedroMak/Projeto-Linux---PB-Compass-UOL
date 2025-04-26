@@ -17,4 +17,14 @@ wsl --install
 Em seguida, instalei o seguinte subsystem WSL2 da Microsoft Store:<br/>
 ![image](https://github.com/user-attachments/assets/ae1bbd12-2b36-4598-aae7-76d61429a354)
 
-
+## Segunda etapa - subir servidor Nginx:
+Primeiro fiz uma atualização dos meus pacotes com os comandos:
+```
+sudo apt update
+sudo apt upgrade
+```
+Em seguida fiz a instalação do nginx com o seguinte comando:
+```
+sudo apt install nginx
+```
+Após a instalação podemos rodar o comando `systemctl status nginx` para verificar o status do servidor que, pela imagem ![image](https://github.com/user-attachments/assets/141fe4b9-5df0-4b75-9215-8ebbb5f5c366) vemos que se encontra ativo.
