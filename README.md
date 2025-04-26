@@ -28,3 +28,9 @@ Em seguida fiz a instalação do nginx com o seguinte comando:
 sudo apt install nginx
 ```
 Após a instalação podemos rodar o comando `systemctl status nginx` para verificar o status do servidor que, pela imagem ![image](https://github.com/user-attachments/assets/141fe4b9-5df0-4b75-9215-8ebbb5f5c366) vemos que se encontra ativo.
+
+## Terceira etapa - criação da página html:
+Dentro do diretório `/var/www/html` encontra-se um arquivo chamado `index.nginx-debian.html` com uma apresentação simples sobre o Nginx. Mative a estrutura do site e apenas alterei o texto.<br/>
+![image](https://github.com/user-attachments/assets/45d5e5e0-3093-4e73-a07f-6d60233ef0ab)
+
+
