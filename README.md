@@ -78,5 +78,13 @@ fi
     * `-X POST` - definição de método HTTP a ser utilizado;
     * `-d "{\"content\": \"Website DOWN.\"}"` - corpo da mensagem a ser enviada;
     * E por último o link do Webhook.
-     
+### Automatização do script:
+Com o uso do `cron` para agendamento de serviços, usei o comando `sudo crontab -e` para acessar e editar o arquivo crontab, que contem os agendamentos. Nesse arquivo adicionei a seguinte linha:
+```
+* * * * * /var/www/html/monitoringscript.sh
+```
+Onde os asteriscos, da esquerda para a direita, respectivamente, significam minuto, hora, dia do mês, mês e dia da semana; seguido do arquivo que será executado.
+
+## Quinta etapa - criação do arquivo de log:
+Dentro do diretório `/var/log` usei o comando `touch` para criar o arquivo `monitoringscript.log`.
 
