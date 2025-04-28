@@ -5,7 +5,7 @@
 * Configurar um ambiente Linux;
 * Subir um servidor Nginx;
 * Criar uma página html simples que será exibida dentro do servidor;
-* Criar um script que verifiquea cada 1 minuto se o site está disponível. Caso o site esteja indisponível, o script deve enviar uma notificação informando a indisponibilidade do site via Webhook para algum canal (Discord, Telegram ou Slack);
+* Criar um script que verifique a cada 1 minuto se o site está disponível. Caso o site esteja indisponível, o script deverá enviar uma notificação informando a indisponibilidade do site via Webhook para algum canal (Discord, Telegram ou Slack);
 * O script deve armazenar os logs da execução em um local no servidor.
 
 ## Primeira etapa - configuração do ambiente:
@@ -65,7 +65,7 @@ fi
      ```
      echo "Verificação executada em $(date) - Código HTTP: $STATUS" >> /var/log/monitoringscript.log
      ```
-  * Em casos de código diferente de 200, imprime o momento de verificação e o resultado da verificação em um arquivo de log e envia um alerta a um dado servidor de Discord informado que o site está fora do ar.
+  * Em casos de código diferente de 200, imprime o momento de verificação e o resultado da verificação em um arquivo de log, e envia um alerta a um dado servidor de Discord informando que o site está fora do ar.
     ```
     else
         echo "Verificação executada em $(date) - Código HTTP: $STATUS" >> /var/log/monitoringscript.log
@@ -86,10 +86,10 @@ Com o uso do `cron` para agendamento de serviços, usei o comando `sudo crontab 
 Onde os asteriscos, da esquerda para a direita, respectivamente, significam minuto, hora, dia do mês, mês e dia da semana; seguido do arquivo que será executado.
 
 ## Quinta etapa - criação do arquivo de log:
-Dentro do diretório `/var/log` usei o comando `touch` para criar o arquivo `monitoringscript.log`.
+Dentro do diretório `/var/log` usei o comando `touch` para criar o arquivo `monitoringscript.log` que é apontado na linha `echo "Verificação executada em $(date) - Código HTTP: $STATUS" >> /var/log/monitoringscript.log` dentro do arquivo `monitoringscript.sh`.
 
 ## Testando:
-Para fins de teste utilizei o comando `sudo systemctl stop nginx` para parar o servidor e simular uma queda, resultado no seguinte alerta em meu servidor:<br/>
+Para fins de teste utilizei o comando `sudo systemctl stop nginx` para parar o servidor e simular uma queda, resultado no seguinte alerta em meu Discord:<br/>
 ![image](https://github.com/user-attachments/assets/c4acf6f1-6471-438d-977b-3b332d8d635a)
 
-Para que o servidor volte ao ar, utilizei o comando `sudo systemctl start nginx`.
+Para que o servidor voltasse ao ar, utilizei o comando `sudo systemctl start nginx`.
