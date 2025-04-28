@@ -30,7 +30,7 @@ Após a instalação podemos rodar o comando `systemctl status nginx` para verif
 
 ## Terceira etapa - criação da página html:
 Dentro do diretório `/var/www/html` encontra-se um arquivo chamado `index.nginx-debian.html` com uma apresentação simples sobre o Nginx. Mative a estrutura do site e apenas alterei o texto.<br/>
-![image](https://github.com/user-attachments/assets/45d5e5e0-3093-4e73-a07f-6d60233ef0ab)
+![image](https://github.com/user-attachments/assets/873a07eb-332b-43e5-9306-80641f1087e8)
 
 ## Quarta etapa - criação do script de verificação:
 Ainda dentro do diretório `/var/www/html` usei o comando `touch` para criar um arquivo chamado `monitoringscript.sh`, onde escrevi o código a seguir:
@@ -88,3 +88,8 @@ Onde os asteriscos, da esquerda para a direita, respectivamente, significam minu
 ## Quinta etapa - criação do arquivo de log:
 Dentro do diretório `/var/log` usei o comando `touch` para criar o arquivo `monitoringscript.log`.
 
+## Testando:
+Para fins de teste utilizei o comando `sudo systemctl stop nginx` para parar o servidor e simular uma queda, resultado no seguinte alerta em meu servidor:<br/>
+![image](https://github.com/user-attachments/assets/c4acf6f1-6471-438d-977b-3b332d8d635a)
+
+Para que o servidor volte ao ar, utilizei o comando `sudo systemctl start nginx`.
