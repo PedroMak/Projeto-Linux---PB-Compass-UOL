@@ -14,6 +14,7 @@ Primeiro rodei o seguinte comando no PowerShell:
 wsl --install
 ```
 Em seguida, instalei o seguinte subsystem WSL2 da Microsoft Store:<br/>
+
 ![image](https://github.com/user-attachments/assets/ae1bbd12-2b36-4598-aae7-76d61429a354)
 
 ## Segunda etapa - subir servidor Nginx:
@@ -30,6 +31,7 @@ Após a instalação podemos rodar o comando `systemctl status nginx` para verif
 
 ## Terceira etapa - criação da página html:
 Dentro do diretório `/var/www/html` encontra-se um arquivo chamado `index.nginx-debian.html` com uma apresentação simples sobre o Nginx. Mative a estrutura do site e apenas alterei o texto.<br/>
+
 ![image](https://github.com/user-attachments/assets/873a07eb-332b-43e5-9306-80641f1087e8)
 
 ## Quarta etapa - criação do script de verificação:
@@ -84,9 +86,17 @@ Com o uso do `cron` para agendamento de serviços, usei o comando `sudo crontab 
 * * * * * /var/www/html/monitoringscript.sh
 ```
 Onde os asteriscos, da esquerda para a direita, respectivamente, significam minuto, hora, dia do mês, mês e dia da semana; seguido do arquivo que será executado.
+> [!NOTE]
+> Nesse caso pode ser tanto `* * * * *` que significa "todo minuto" quanto `*/1 * * * *` que significa "a cada 1 minuto".
 
 ## Quinta etapa - criação do arquivo de log:
-Dentro do diretório `/var/log` usei o comando `touch` para criar o arquivo `monitoringscript.log` que é apontado na linha `echo "Verificação executada em $(date) - Código HTTP: $STATUS" >> /var/log/monitoringscript.log` dentro do arquivo `monitoringscript.sh`.
+Dentro do diretório `/var/log` usei o comando `touch` para criar o arquivo `monitoringscript.log` que é apontado na linha `echo "Verificação executada em $(date) - Código HTTP: $STATUS" >> /var/log/monitoringscript.log` dentro do arquivo `monitoringscript.sh`.<br/>
+
+Para visualizarmos o conteúdo do arquivo de log, utilizei o comando `cd /var/log` para entrar no diretório onde o arquivo está localizado e em seguida o comando `cat monitoringscript.log` para visualizar o conteúdo a seguir:
+
+![image](https://github.com/user-attachments/assets/1197650b-c10c-4d36-b271-84bb09e46ebe)
+> [!NOTE]
+> As linhas com código HTTP 000 são de momentos em que simulei uma queda do servidor
 
 ## Testando:
 Para fins de teste utilizei o comando `sudo systemctl stop nginx` para parar o servidor e simular uma queda, resultado no seguinte alerta em meu Discord:<br/>
